@@ -1,24 +1,77 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column            | Type   | Options         |
+| ----------------- | ------ |---------------- |
+| nickname          | string | null: false     |
+| email             | string | null: false     |
+| encrypted_password| string | null: false     |
+| sei               | string | null: false     |
+| mei               | string | null: false     |
+| kana_sei          | string | null: false     |
+| kana_mei          | string | null: false     |
+| birthday_yy       | integer| null: false     |
+| birthday_mm       | integer| null: false     |
+| birthday_dd       | integer| null: false     |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :cards
+- has_many :items
 
-* Configuration
 
-* Database creation
+## items テーブル
 
-* Database initialization
+| Column             | Type     | Options                        |
+| ------------------ | -------- | ------------------------------ |
+| image              |          | ActiveStorage                  |
+| name               | string   | null: false                    |
+| description        | text     | null: false                    |
+| category_id        | integer  | null: false                    |
+| condition_id       | integer  | null: false                    |
+| shipping_burden_id | integer  | null: false                    |
+| shipping_area_id   | integer  | null: false                    |
+| shipping_date_id   | integer  | null: false                    |
+| price              | integer  | null: false                    |
+| user_id            | reference| null: false, foreign_key: true |
 
-* How to run the test suite
+- _idのつくinteger Typeは、アクティブハッシュを使用する。
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :user
+- belongs_to :card
 
-* Deployment instructions
 
-* ...
+## cards テーブル
+
+| Column           | Type     | Options                        |
+| ---------------- | -------- |------------------------------- |
+| card_number      | integer  | null: false                    |
+| expiration_month | integer  | null: false                    |
+| expiration_year  | integer  | null: false                    |
+| security_code    | integer  | null: false                    |
+| user_id          | reference| null: false, foreign_key: true |
+| item_id          | reference| null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :item
+- belongs_to :user
+- has_one : delivery
+
+## deliveries テーブル
+
+| Column         | Type     | Options                        |
+| -------------- | -------- |------------------------------- |
+| zip_code       | integer  | null: false                    |
+| prefectures    | string   | null: false                    |
+| municipalities | string   | null: false                    |
+| address        | integer  | null: false                    |
+| building       | string   |                                |
+| tel            | integer  | null: false                    |
+| card_id        | reference| null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :card
