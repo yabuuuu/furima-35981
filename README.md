@@ -60,10 +60,10 @@
 | zip_code         | string   | null: false                    |
 | shipping_area_id | integer  | null: false                    |
 | municipalities   | string   | null: false                    |
-| address          | integer  | null: false                    |
+| address          | string   | null: false                    |
 | building         | string   |                                |
 | tel              | string   | null: false                    |
-| card             | reference| null: false, foreign_key: true |
+| user_item        | reference| null: false, foreign_key: true |
 
 ### Association
 
