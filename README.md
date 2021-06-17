@@ -67,4 +67,4 @@
 
 ### Association
 
-- belongs_to :card
+- belongs_to :user_item
