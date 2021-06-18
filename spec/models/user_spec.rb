@@ -115,8 +115,13 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include"Kana mei can't be blank"
       end
-      it 'kana_sei,kana_meiはひらがなでは登録できない' do
-        @user.kana_mei = 'たなか'
+      it 'kana_seiはひらがなでは登録できない' do
+        @user.kana_sei = 'たなか'
+        @user.valid?
+        expect(@user.errors.full_messages).to include"Kana sei is invalid"
+      end
+      it 'kana_meiはひらがなでは登録できない' do
+        @user.kana_mei = 'はなこ'
         @user.valid?
         expect(@user.errors.full_messages).to include"Kana mei is invalid"
       end

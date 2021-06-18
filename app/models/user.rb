@@ -6,12 +6,12 @@ class User < ApplicationRecord
 
   
 
-  with_options presence: true, format: { with: /\A[ァ-ヴ]+\z/ } do
+  with_options presence: true, format: { with: /\A[ァ-ヴー]+\z/ } do
     validates :kana_sei
     validates :kana_mei
   end
 
-  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/ } do
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ } do
     validates :sei
     validates :mei
   end
