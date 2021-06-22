@@ -12,7 +12,5 @@ class Item < ApplicationRecord
   
   validates :name, :description, :image, presence: true
   validates :category_id, :condition_id, :shipping_area_id, :shipping_burden_id, :shipping_date_id, numericality: { other_than: 1 } 
-  validates :price, format: { with: /\A[0-9]+\z/ }, presence: true
-  validates_inclusion_of :price, in:300..9999999
-
+  validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
 end

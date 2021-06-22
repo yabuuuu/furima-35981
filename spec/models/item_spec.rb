@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   before do
-    @user = FactoryBot.build(:user)
+    #@user = FactoryBot.build(:user)
     @item = FactoryBot.build(:item)
   end
 
@@ -57,27 +57,27 @@ RSpec.describe Item, type: :model do
       it '価格が300未満では出品できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include"Price is not included in the list"
+        expect(@item.errors.full_messages).to include"Price must be greater than or equal to 300"
       end
       it '価格が9,999,999より大きいと出品できない' do
         @item.price = 10000000
         @item.valid?
-        expect(@item.errors.full_messages).to include"Price is not included in the list"
+        expect(@item.errors.full_messages).to include"Price must be less than or equal to 9999999"
       end
       it '価格が全角だと出品できない' do
         @item.price = '１８００'
         @item.valid?
-        expect(@item.errors.full_messages).to include"Price is not included in the list"
+        expect(@item.errors.full_messages).to include"Price is not a number"
       end
       it '価格が半角英数字混合では出品できない' do
         @item.price = 'a1800'
         @item.valid?
-        expect(@item.errors.full_messages).to include"Price is not included in the list"
+        expect(@item.errors.full_messages).to include"Price is not a number"
       end
       it '価格が半角英字のみでは出品できない' do
         @item.price = 'aaaaa'
         @item.valid?
-        expect(@item.errors.full_messages).to include"Price is not included in the list"
+        expect(@item.errors.full_messages).to include"Price is not a number"
       end
     end
   end
