@@ -128,9 +128,10 @@
     </div>
     <ul class='item-lists'>
 
-      <% if @item.nil?  %>
-        <li class='list'>
-          <% @items.each do |item| %>
+      <% if @items.nil?  %>
+        <% @items.each do |item| %>
+          <li class='list'>
+          
             <%= link_to "#" do %>
             <div class='item-img-content'>
               <%= image_tag item.image, class: "item-img" %>
@@ -155,8 +156,8 @@
               </div>
             </div>
             <% end %>
-          <% end %>
-        </li>
+          </li>
+        <% end %>
       <% else %>
         <li class='list'>
           <%= link_to '#' do %>
