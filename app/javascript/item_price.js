@@ -1,5 +1,5 @@
 window.addEventListener('load', () => {
-  const priceInput = document.getElementById("item-price");
+  const priceInput = document.getElementById("price");
   priceInput.addEventListener("input", () => {
     const inputValue = priceInput.value;
     
@@ -10,3 +10,4 @@ window.addEventListener('load', () => {
     profitDom.innerHTML = Math.ceil ( inputValue - (inputValue * 0.1));
   })
 });
+
