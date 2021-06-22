@@ -4,9 +4,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all  
-    
-    #@shipping_burden = @items.shipping_burden.name
-    #@shipping_burden = ShippingBurden.shipping_burden_id[:name]
   end
 
   def new
