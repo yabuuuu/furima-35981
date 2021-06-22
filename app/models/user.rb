@@ -15,7 +15,7 @@ class User < ApplicationRecord
     validates :sei
     validates :mei
   end
-  #validates :password, format: {with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: "は、英数混合で入力してください"}
+  
   validates :password, format: {with: /\A(?=.*?[a-zA-Z])(?=.*?[\d])[a-z\d]+\z/i }
   
   validates :nickname, presence: true
