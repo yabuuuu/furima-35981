@@ -5,7 +5,7 @@ class UserItemDelivery
   with_options presence: true do
     validates :zip_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/,message: "is invalid. Include hyphen(-)"}
     validates :shipping_area_id, numericality: { other_than: 1 }
-    validates :municipalities, :address, :token
+    validates :municipalities, :address, :token, :user_id, :item_id
     validates :tel, numericality: {only_integer: true}, format: { with: /\A\d{10,11}\z/}
   end
 
