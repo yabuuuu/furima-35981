@@ -75,6 +75,12 @@ RSpec.describe UserItemDelivery, type: :model do
         expect( @user_item_delivery.errors.full_messages).to include("Tel is invalid")
       end
 
+      it 'telが12桁だと保存できないこと' do
+        @user_item_delivery.tel = 123456789012
+        @user_item_delivery.valid?
+        expect( @user_item_delivery.errors.full_messages).to include("Tel is invalid")
+      end
+
       it 'telが全角だと保存できないこと' do
         @user_item_delivery.tel = '１２３１２３４１２３４'
         @user_item_delivery.valid?

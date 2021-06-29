@@ -1,6 +1,6 @@
 class UserItemDelivery
   include ActiveModel::Model
-  attr_accessor :token, :zip_code, :shipping_area_id, :municipalities, :address, :building, :tel, :user_id, :item_id, :uset_item_id
+  attr_accessor :token, :zip_code, :shipping_area_id, :municipalities, :address, :building, :tel, :user_id, :item_id
 
   with_options presence: true do
     validates :zip_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/,message: "is invalid. Include hyphen(-)"}
