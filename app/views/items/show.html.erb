@@ -22,6 +22,7 @@
         <%= @item.shipping_burden.name %>
       </span>
     </div>
+    
     <% if user_signed_in? %>
       <% if  current_user.id == @item.user_id %>
         <% unless @item.user_item %>
